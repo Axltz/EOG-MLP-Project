@@ -1,4 +1,4 @@
 # data/
 
-- `DataSet_completo(1).xlsx` — Archivo original (**nadie lo edita**). Falta agregarlo manualmente.
-- `Dataset_reducido.xlsx` — Lo creará Integrante 1 desde el archivo original.
+- `DataSet_completo(1).xlsx` — Original file (**do not edit**). Must be added manually.
+- `Dataset_reducido.xlsx` — To be created by Member 1 from the original file.

@@ -8,7 +8,7 @@ venv/
 # Jupyter
 .ipynb_checkpoints/
 
-# Excel (los datasets se agregan aparte, son binarios)
+# Excel (datasets are added manually, they are binary files)
 # data/*.xlsx
 
 # Sistema

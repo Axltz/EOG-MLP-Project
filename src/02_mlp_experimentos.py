@@ -1,2 +1,2 @@
-# 02_mlp_experimentos.py — Exclusivo Integrante 2
-# Experimentos de la MLP: entrenamiento, validación y métricas.
+# 02_mlp_experimentos.py — Exclusive to Member 2
+# MLP experiments: training, validation, and metrics.

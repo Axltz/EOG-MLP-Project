@@ -1,2 +1,2 @@
-# main.py — Script maestro final
-# Orquesta todo el pipeline: datos → experimentos → resultados → figuras.
+# main.py — Master script
+# Orchestrates the full pipeline: data → experiments → results → figures.
