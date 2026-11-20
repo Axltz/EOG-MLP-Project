@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Excel (los datasets se agregan aparte, son binarios)
+# data/*.xlsx
+
+# Sistema
+Thumbs.db
+.DS_Store
