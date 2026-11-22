@@ -20,5 +20,5 @@ Implementation of a Multi-Layer Perceptron (MLP) from scratch using **NumPy** to
 | Model / Experiment | Features | Accuracy | Macro F1-Score |
 | :--- | :---: | :---: | :---: |
 | Benchmark (Decision Tree w/ Length) | 19 | 83.4% | — |
-| Custom MLP (Baseline w/o Length) | 29 | *TBD%* | *TBD%* |
-| Custom MLP (Correlation Filtered) | *TBD* | *TBD%* | *TBD%* |
+| Custom MLP (Baseline w/o Length - Phase 2) | 29 | **57.0%** (±6.6%) | **55.7%** |
+| Custom MLP (Correlation Filtered |r|>0.8 - Phase 4) | 20 | **44.5%** (±14.7%) | **43.6%** |
