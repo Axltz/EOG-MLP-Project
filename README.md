@@ -17,8 +17,8 @@ Implementation of a Multi-Layer Perceptron (MLP) from scratch using **NumPy** to
 * `fig/` — Distributions, correlation heatmaps, loss curves, and confusion matrices.
 
 ## Results Summary
-| Model / Experiment | Features | Accuracy | Macro F1-Score |
-| :--- | :---: | :---: | :---: |
-| Benchmark (Decision Tree w/ Length) | 19 | 83.4% | — |
-| Custom MLP (Baseline w/o Length - Phase 2) | 29 | **57.0%** (±6.6%) | **55.7%** |
-| Custom MLP (Correlation Filtered |r|>0.8 - Phase 4) | 20 | **44.5%** (±14.7%) | **43.6%** |
+| Model / Experiment | Features | Accuracy | Macro Precision | Macro Recall | Macro F1-Score |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| Benchmark (Decision Tree w/ Length) | 19 | 83.4% | — | — | — |
+| Custom MLP (Baseline w/o Length - Phase 2) | 29 | **57.0%** (±6.6%) | **59.0%** | **57.0%** | **55.7%** |
+| Custom MLP (Correlation Filtered \|r\|>0.8 - Phase 4) | 20 | **44.5%** (±14.7%) | **45.1%** | **44.5%** | **43.6%** |

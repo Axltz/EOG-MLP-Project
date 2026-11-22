@@ -156,6 +156,8 @@ def calcular_metricas_multiclase(y_true, y_pred, num_clases=10):
     for t, p in zip(y_true, y_pred):
         cm[t, p] += 1
 
+    precision_list = []
+    recall_list = []
     f1_list = []
     for c in range(num_clases):
         tp = cm[c, c]
@@ -164,9 +166,15 @@ def calcular_metricas_multiclase(y_true, y_pred, num_clases=10):
         prec = tp / (tp + fp) if (tp + fp) > 0 else 0.0
         rec = tp / (tp + fn) if (tp + fn) > 0 else 0.0
         f1 = 2 * (prec * rec) / (prec + rec) if (prec + rec) > 0 else 0.0
+        precision_list.append(prec)
+        recall_list.append(rec)
         f1_list.append(f1)
 
-    return accuracy, np.mean(f1_list), cm
+    macro_precision = np.mean(precision_list)
+    macro_recall = np.mean(recall_list)
+    macro_f1 = np.mean(f1_list)
+
+    return accuracy, macro_precision, macro_recall, macro_f1, cm
 
 
 def crear_k_folds_estratificados(y, k=5, seed=RANDOM_STATE):
@@ -198,6 +206,8 @@ def ejecutar_experimentos_kfold(df, nombre_experimento, config):
 
     folds = crear_k_folds_estratificados(y_crudo, k=K_FOLDS, seed=RANDOM_STATE)
     accuracies = []
+    precisions = []
+    recalls = []
     f1_scores = []
     perdidas_tr_todas = []
     perdidas_val_todas = []
@@ -228,9 +238,11 @@ def ejecutar_experimentos_kfold(df, nombre_experimento, config):
         )
 
         y_pred = mlp.predecir(X_val_fold)
-        acc, f1, cm = calcular_metricas_multiclase(y_val_fold, y_pred, 10)
+        acc, prec, rec, f1, cm = calcular_metricas_multiclase(y_val_fold, y_pred, 10)
 
         accuracies.append(acc)
+        precisions.append(prec)
+        recalls.append(rec)
         f1_scores.append(f1)
         cm_total += cm
         perdidas_tr_todas.append(hist_tr)
@@ -238,12 +250,18 @@ def ejecutar_experimentos_kfold(df, nombre_experimento, config):
 
     prom_acc = np.mean(accuracies) * 100
     std_acc = np.std(accuracies) * 100
+    prom_prec = np.mean(precisions) * 100
+    prom_rec = np.mean(recalls) * 100
     prom_f1 = np.mean(f1_scores) * 100
+
+    print(f"[{nombre_experimento} - {config['nombre']}] Acc: {prom_acc:.2f}% (±{std_acc:.2f}%) | Prec: {prom_prec:.2f}% | Rec: {prom_rec:.2f}% | F1: {prom_f1:.2f}%")
 
     return {
         "nombre": f"{nombre_experimento}_{config['nombre']}",
         "acc_mean": prom_acc,
         "acc_std": std_acc,
+        "prec_mean": prom_prec,
+        "rec_mean": prom_rec,
         "f1_mean": prom_f1,
         "cm": cm_total,
         "loss_tr": np.mean(perdidas_tr_todas, axis=0),
