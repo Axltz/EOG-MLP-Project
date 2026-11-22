@@ -14,3 +14,7 @@ venv/
 # Sistema
 Thumbs.db
 .DS_Store
+
+# Manual de estudio personal (local, no subir al repo del profesor)
+Manual_Estudio_EOG_MLP.pdf
+Manual_Estudio_EOG_MLP.md
